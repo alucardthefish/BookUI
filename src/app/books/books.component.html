@@ -1,0 +1,66 @@
+
+<app-add-book-button (click)="toggleButton()"></app-add-book-button>
+
+<div [hidden]="isHide" class="container">
+  <form [formGroup]="form" (ngSubmit)="submitForm()" class="row g-3">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" formControlName="title" type="text" name="title" id="title" placeholder="Add title" />
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input class="form-control" formControlName="author" type="text" name="author" id="author" placeholder="Add book's author" />
+    </div>
+    <div class="form-group">
+      <label for="read">Read</label>
+      <input type="checkbox" formControlName="read" name="read" id="read" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary mb-3" [disabled]="form.invalid">Confirm</button>
+    </div>
+  </form>
+</div>
+
+<div [hidden]="isNotUpdating" class="container">
+  <form [formGroup]="updateForm" (ngSubmit)="updateBook()" class="row g-3">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input class="form-control" formControlName="title" type="text" name="title" id="title" placeholder="Add title" />
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input class="form-control" formControlName="author" type="text" name="author" id="author" placeholder="Add book's author" />
+    </div>
+    <div class="form-group">
+      <label for="read">Read</label>
+      <input type="checkbox" formControlName="read" name="read" id="read" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-warning mb-3" [disabled]="updateForm.invalid">Update</button>
+    </div>
+  </form>
+</div>
+
+<table class="table table-hover caption-top">
+  <caption>List of books</caption>
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Read?</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td *ngIf="book.read">Yes</td>
+      <td *ngIf="!book.read">No</td>
+      <td>
+        <button class="btn btn-warning" (click)="setUpdateBook(book)">Update</button>
+        <button class="btn btn-danger" (click)="deleteBook(book.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
