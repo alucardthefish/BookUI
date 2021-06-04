@@ -1,6 +1,22 @@
-# BookProject
+# BookUI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
+User Interface for listing book collection. It consumes REST-API developed in [book-api](https://github.com/alucardthefish/bookapi.git). First, make sure to start the REST-API server in order to run this project successfully.
+
+## Prerequisites
+
+1. Install Nodejs
+
+2. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
+
+# Getting started
+
+Make sure you have the [Angular CLI](https://github.com/angular/angular-cli#installation) installed globally.
+
+## Install dependencies
+
+```bash
+npm install
+```
 
 ## Development server
 
